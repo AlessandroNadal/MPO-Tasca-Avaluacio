@@ -24,7 +24,7 @@ public class ConflictController {
     }
 
     @PostMapping
-    public long foo(@RequestBody ConflictDTO conflict) {
+    public long createConflict(@RequestBody ConflictDTO conflict) {
         Conflict c = new Conflict();
         c.setName(conflict.getName());
         c.setDescription(conflict.getDescription());
@@ -34,6 +34,19 @@ public class ConflictController {
         c = conflictRepository.save(c);
 
         return c.getId();
+    }
+
+    @PutMapping("/{id}")
+    public long updateConflict(@PathVariable Long id, @RequestBody ConflictDTO conflictDTO) {
+        Conflict conflict = conflictRepository.findConflictById(id);
+        conflict.setName(conflictDTO.getName());
+        conflict.setDescription(conflictDTO.getDescription());
+        conflict.setCountries(conflictDTO.getCountries());
+        conflict.setStatus(conflictDTO.getStatus());
+        conflict.setStartDate(conflictDTO.getStartDate());
+        conflictRepository.save(conflict);
+
+        return conflict.getId();
     }
 
 
@@ -46,4 +59,5 @@ public class ConflictController {
     public void deleteConflict(@RequestParam long id) {
         conflictRepository.deleteConflictById(id);
     }
+
 }

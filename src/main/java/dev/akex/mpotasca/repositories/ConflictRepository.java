@@ -4,6 +4,8 @@ import dev.akex.mpotasca.Status;
 import dev.akex.mpotasca.entities.Conflict;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.List;
+
 public interface ConflictRepository extends CrudRepository<Conflict, Integer> {
     String getAllByIdNotNull(long id);
 
@@ -12,4 +14,5 @@ public interface ConflictRepository extends CrudRepository<Conflict, Integer> {
     void deleteConflictById(long id);
 
     Iterable<Conflict> getAllByStatusIs(Status status);
+
 }

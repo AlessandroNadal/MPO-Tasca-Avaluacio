@@ -1,27 +1,17 @@
-package dev.akex.mpotasca.entities;
+package dev.akex.mpotasca.dto;
 
-import jakarta.persistence.*;
+
+import dev.akex.mpotasca.entities.Conflict;
+import jakarta.persistence.Column;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "event")
-public class Event {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-
-    @Column(name="eventdate", nullable = false)
+public class EventDTO {
     private LocalDate eventDate;
-
-    @Column(name="location", nullable = false)
     private String location;
-
-    @Column(name="description", nullable = false)
     private String description;
-
-    @ManyToOne
-    @JoinColumn(name = "conflict")
     private Conflict conflict;
 
     public LocalDate getEventDate() {
@@ -54,9 +44,5 @@ public class Event {
 
     public void setConflict(Conflict conflict) {
         this.conflict = conflict;
-    }
-
-    public long getId() {
-        return id;
     }
 }

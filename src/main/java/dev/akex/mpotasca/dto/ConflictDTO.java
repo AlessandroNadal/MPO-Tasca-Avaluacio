@@ -53,4 +53,5 @@ public class ConflictDTO {
     public void setCountries(Set<Country> countries) {
         this.countries = countries;
     }
+
 }
