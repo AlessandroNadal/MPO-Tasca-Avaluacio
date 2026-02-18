@@ -1,0 +1,12 @@
+### GET request to example server
+POST http://localhost:8080/api/v1/conflicts
+Content-Type: application/json
+
+{
+  "name": "test",
+  "description": "test",
+  "startDate": "2000-01-01",
+  "countries": [],
+  "status": "ACTIVE"
+}
+###
